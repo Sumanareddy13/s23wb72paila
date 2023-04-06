@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome back to #{title} modifed by Sai Prashanth Volete
+
+  - results = [{ book: "comic", genre: "funcomic", cost: 30 },{ book: "HarryPotter", genre: "Adventure", cost: 150 },{ book: "Lovestory", genre: "lovestory", cost: 100 }];
+  div.container-fluid 
+    -
+    div.row 
+    -
+    each item, index in results
+        div.col-sm-6
+            h2= item.drink, onclick='buy(index)'
+            p= item.drink_size 
+            p= "cost: $"+item.cost.toFixed(2)
+            div.row
+                each prop, i in Object.keys(item)
+                    div(col-sm-2,  onclick=`buy(${index})`)
+                        p #{Object.keys(item)[i]}: #{item[prop]}
+
